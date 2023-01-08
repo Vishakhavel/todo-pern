@@ -1,1 +1,2 @@
-todo pern
+ikr, what an original thought....
+<img width="1031" alt="image" src="https://user-images.githubusercontent.com/54572908/211180233-7d430cfa-6c8c-472c-b868-4a23534d0e01.png">
