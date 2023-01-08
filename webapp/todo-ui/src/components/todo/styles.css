@@ -1,4 +1,5 @@
 .container {
+  padding: 30px;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -18,9 +19,6 @@
 .list {
   display: flex;
 }
-.todoText {
-  margin-right: 20px;
-}
 
 .backdrop {
   position: fixed;
@@ -36,8 +34,17 @@
   position: fixed;
   overflow: hidden;
   z-index: 100;
-  left: 10%;
-  width: 80%;
+  left: 600px;
   top: 30vh;
-  background: red;
+  background-color: aquamarine;
+}
+
+.doneButton {
+  margin: auto;
+  /* width: 20%; */
+}
+.todoText {
+  width: 80%;
+  /* word-wrap: break-word; */
+  word-break: break-all;
 }

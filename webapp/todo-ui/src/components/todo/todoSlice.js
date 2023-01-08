@@ -1,17 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 import { COMPLETED, PENDING, DELETED } from "./constants";
 
 export const todoSlice = createSlice({
   name: "todos",
   initialState: {
     todoData: [
-      { id: 1, textData: "Clean room", status: PENDING },
-      { id: 2, textData: "do laundry", status: PENDING },
+      { id: "1", textData: "Clean room", status: PENDING },
+      { id: "2", textData: "do laundry", status: PENDING },
     ],
   },
   reducers: {
     addTodo: (state, action) => {
-      state.todoData += action.payload;
+      console.log(action);
+      state.todoData = [
+        ...state.todoData,
+        {
+          id: action.payload.id,
+          textData: action.payload.textData,
+          status: PENDING,
+        },
+      ];
     },
     deleteTodo: (state, action) => {
       console.log("from inside the delete", action);

@@ -10,6 +10,7 @@ import AddTodo from "./AddTodo";
 const Todo = () => {
   const [showAddTodo, setShowAddTodo] = useState(false);
   const todos = useSelector((state) => state.todos.todoData);
+  console.log("todos after useSelector", todos);
   let pendingTodos = todos.filter((curTodo) => curTodo.status === PENDING);
   let completedTodos = todos.filter((curTodo) => curTodo.status === COMPLETED);
 
@@ -33,7 +34,9 @@ const Todo = () => {
   };
   return (
     <div>
-      {showAddTodo && <AddTodo onOutsideClick={handleOutsideClick} />}
+      {showAddTodo && (
+        <AddTodo dispatch={dispatch} onOutsideClick={handleOutsideClick} />
+      )}
       <div className="container green">
         <h4>TODO LIST</h4>
         <div className="row">
@@ -42,27 +45,33 @@ const Todo = () => {
             {pendingTodos.map((curTodo) => (
               <div className="list">
                 <div className="todoText">{curTodo.textData}</div>
-                <Button
-                  onClick={() => {
-                    //   console.log(curTodo.id);
-                    handleDoneButton(curTodo.id);
-                  }}
-                >
-                  done
-                </Button>
+                <div className="doneButton">
+                  <Button
+                    onClick={() => {
+                      handleDoneButton(curTodo.id);
+                    }}
+                  >
+                    done
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
           <div className="col-sm blue">
             <h4>COMPLETED LIST</h4>
-            {completedTodos.map((curTodo) => (
-              <div className="list">
-                <div className="todoText">{curTodo.textData}</div>
-                <Button onClick={() => handleDeleteButton(curTodo.id)}>
-                  delete
-                </Button>
-              </div>
-            ))}
+            <div className="items">
+              {completedTodos.map((curTodo) => (
+                <div className="list">
+                  <div className="todoText">{curTodo.textData}</div>
+                  <div className="deleteButton">
+                    <Button onClick={() => handleDeleteButton(curTodo.id)}>
+                      delete
+                    </Button>
+                  </div>
+                </div>
+              ))}
+              <br />
+            </div>
           </div>
         </div>
         <Button onClick={handleAddTodoClick}>Add todo</Button>
