@@ -8,6 +8,8 @@ export const todoSlice = createSlice({
     todoData: [
       { id: "1", textData: "Clean room", status: PENDING },
       { id: "2", textData: "do laundry", status: PENDING },
+      { id: "3", textData: "extraaa", status: PENDING },
+      { id: "4", textData: "oooooo", status: PENDING },
     ],
   },
   reducers: {
